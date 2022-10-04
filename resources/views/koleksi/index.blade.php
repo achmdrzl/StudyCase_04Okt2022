@@ -38,7 +38,8 @@
                                 <form action="{{ route('koleksi.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Do you want to delete this data?')">
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Do you want to delete this data?')">
                                         Delete
                                     </button>
                                 </form>
