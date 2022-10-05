@@ -16,9 +16,9 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('kode');
-            $table->string('name');
-            $table->integer('price');
+            $table->string('kode', 25);
+            $table->string('name', 75);
+            $table->float('price');
             $table->integer('qty');
             $table->date('date_receive');
             $table->date('date')->default(DB::raw('CURRENT_TIMESTAMP'));

@@ -26,9 +26,11 @@ class KoleksiController extends Controller
      */
     public function create()
     {
-        $categories = Category::all()->pluck('title', 'id');
+        // $categories = Category::pluck('title', 'id');
+        $data = Category::all();
+        // $category = Category::whereNotNull('category_id')->get();
 
-        return view("koleksi.create", compact('categories'));
+        return view("koleksi.create", compact('data'));
     }
 
     /**

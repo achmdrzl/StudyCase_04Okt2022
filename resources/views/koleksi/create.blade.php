@@ -12,12 +12,15 @@
                         aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
-                    <select type="text" class="form-control" name="category_id" id="parent"
-                        placeholder="Name product">
-                        <option value="" selected>-- Choose Category --</option>
-                        @foreach ($categories as $id => $categoryName)
-                            <option value="{{ $id }}">{{ $categoryName }}
-                            </option>
+                    <span class="input-group-text" id="basic-addon1">Choose Category</span>
+                    <select class="js-example-basic-single form-control" type="text" name="category_id" id="parent"
+                        placeholder="Name Category">
+                        @foreach ($data as $categories)
+                            <optgroup label="{{ $categories->title }}">
+                                @foreach ($categories->children as $category)
+                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                @endforeach
+                            </optgroup>
                         @endforeach
                     </select>
                 </div>
@@ -44,3 +47,11 @@
     </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
+@endpush

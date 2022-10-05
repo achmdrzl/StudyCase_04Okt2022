@@ -15,14 +15,17 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nama Kategori</th>
+                        <th scope="col">Parents</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($categories as $item)
+                    {{-- @dd($item->children) --}}
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $item->title }}</td>
+                            <td>{{ $item->parent->title ?? 'Null' }}</td>
                             <td>
                                 <a href="{{ route('category.edit', $item->id) }}" class="btn btn-secondary">Edit</a>
 

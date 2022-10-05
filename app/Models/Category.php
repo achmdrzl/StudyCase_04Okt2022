@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,6 +10,9 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $appends = [
+        'getParentsTree'
+    ];
 
     public $guarded = [
         'id', 'created_at', 'updated_at'
@@ -21,6 +25,6 @@ class Category extends Model
 
     public function children()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Category::class, 'category_id');
     }
 }
